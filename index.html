@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>جداول الكلية التقنية بالطائف</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Tajawal', 'sans-serif'],
+            },
+            colors: {
+              tvtc: {
+                green: '#006c35',
+                light: '#4c9f70',
+                gold: '#cfae5d',
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body {
+        font-family: 'Tajawal', sans-serif;
+        background-color: #f3f4f6;
+      }
+      
+      /* Universal Print Reset for Maximum Compatibility with Global Printer Models */
+      @media print {
+        @page {
+          /* 'auto' allows the printer driver (HP, Epson, etc.) to determine the best paper size 
+             based on the user's tray settings (A4, Letter, etc.) */
+          size: auto; 
+          margin: 5mm; /* Safe margin that works on almost all mechanical printers */
+        }
+        
+        body {
+          background-color: white !important;
+          color: black !important;
+          
+          /* Force background graphics (colors) to print on WebKit/Blink browsers */
+          -webkit-print-color-adjust: exact !important; 
+          print-color-adjust: exact !important;
+          
+          /* Reset page flow to avoid cutting off content */
+          margin: 0 !important;
+          padding: 0 !important;
+          width: 100% !important;
+          height: auto !important;
+          overflow: visible !important;
+        }
+
+        /* Hide browser UI elements and interactive components */
+        header, footer, .no-print, button { 
+            display: none !important; 
+        }
+
+        /* Ensure containers adapt to the paper width */
+        .container, .max-w-6xl, #root {
+            max-width: 100% !important;
+            width: 100% !important;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+        
+        /* Remove shadows and heavy effects for cleaner print on Laser/Inkjet */
+        * {
+            box-shadow: none !important;
+            text-shadow: none !important;
+            filter: none !important;
+             /* Ensure crisp text rendering */
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        /* Ensure breaks don't happen inside cards */
+        .break-inside-avoid {
+            break-inside: avoid;
+            page-break-inside: avoid;
+        }
+      }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.30.0",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.554.0",
+    "xlsx": "https://aistudiocdn.com/xlsx@^0.18.5",
+    "vite": "https://aistudiocdn.com/vite@^7.2.2",
+    "@vitejs/plugin-react": "https://aistudiocdn.com/@vitejs/plugin-react@^5.1.1",
+    "cors": "https://aistudiocdn.com/cors@^2.8.5",
+    "multer": "https://aistudiocdn.com/multer@^2.0.2",
+    "url": "https://aistudiocdn.com/url@^0.11.4",
+    "fs": "https://aistudiocdn.com/fs@^0.0.1-security",
+    "express": "https://aistudiocdn.com/express@^5.1.0",
+    "path": "https://aistudiocdn.com/path@^0.12.7"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
