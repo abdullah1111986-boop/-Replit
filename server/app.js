@@ -4,7 +4,10 @@ import cors from 'cors';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import XLSX from 'xlsx';
+import { createRequire } from 'module';
+
+const require = createRequire(import.meta.url);
+const XLSX = require('xlsx');
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -227,7 +230,6 @@ app.post('/api/upload', upload.single('file'), (req, res) => {
 
 // Handle React Routing (return index.html for any unknown route)
 app.get('*', (req, res) => {
-  // Check if dist/index.html exists before sending, otherwise send a simple error
   const indexPath = path.join(__dirname, '../dist/index.html');
   if (fs.existsSync(indexPath)) {
     res.sendFile(indexPath);
