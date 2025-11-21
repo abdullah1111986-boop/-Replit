@@ -4,7 +4,7 @@ import cors from 'cors';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import * as XLSX from 'xlsx';
+import XLSX from 'xlsx';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -227,7 +227,13 @@ app.post('/api/upload', upload.single('file'), (req, res) => {
 
 // Handle React Routing (return index.html for any unknown route)
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../dist/index.html'));
+  // Check if dist/index.html exists before sending, otherwise send a simple error
+  const indexPath = path.join(__dirname, '../dist/index.html');
+  if (fs.existsSync(indexPath)) {
+    res.sendFile(indexPath);
+  } else {
+    res.status(404).send('App is building... please refresh in a moment or run "npm run build"');
+  }
 });
 
 app.listen(PORT, '0.0.0.0', () => {
